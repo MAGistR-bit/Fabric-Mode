@@ -22,7 +22,8 @@ public class CustomScreen extends Screen {
         int centerX = this.width / 2;
         int centerY = this.height / 2;
 
-        input = new EditBox(this.font, centerX - 100, centerY - 10, 200, 20, Component.literal("Enter text"));
+        input = new EditBox(this.font, centerX - 100, centerY - 10,
+                200, 20, Component.literal("Enter text"));
         input.setMaxLength(256);
         input.setFocused(true);
         addRenderableWidget(input);
@@ -33,6 +34,9 @@ public class CustomScreen extends Screen {
         addRenderableWidget(sendButton);
     }
 
+    /**
+     * Отправка сообщения на сервер при нажатии на кнопку {@code Send}
+     */
     private void onSend() {
         String text = input.getValue().trim();
         if (!text.isEmpty()) {
@@ -41,6 +45,14 @@ public class CustomScreen extends Screen {
         }
     }
 
+    /**
+     * Вызывается для каждого кадра.
+     * <p>Из этого метода можно получить доступ к контексту отрисовки и положению мыши.</p>
+     * @param graphics контекст отрисовки
+     * @param mouseX положение курсора мыши по оси Х
+     * @param mouseY положение курсора мыши по оси Y
+     * @param delta разница
+     */
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
         this.renderBackground(graphics, mouseX, mouseY, delta);

@@ -14,6 +14,7 @@ public class GamemodClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        // Экран открывается при нажатии на кнопку M
         openScreenKey = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                 "key.game_mod.open_screen",
                 GLFW.GLFW_KEY_M,
