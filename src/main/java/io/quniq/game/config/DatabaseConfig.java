@@ -3,7 +3,6 @@ package io.quniq.game.config;
 import io.quniq.game.entity.MessageEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import org.hibernate.cfg.Configuration;
 
 public class DatabaseConfig {
@@ -18,11 +17,16 @@ public class DatabaseConfig {
         try {
             Configuration config = new Configuration();
             
-            // Настройки подключения к PostgreSQL
+            // Настройки подключения к PostgreSQL (Docker)
             config.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver");
             config.setProperty("hibernate.connection.url", "jdbc:postgresql://localhost:5432/minecraft_messages");
             config.setProperty("hibernate.connection.username", "minecraft_user");
             config.setProperty("hibernate.connection.password", "minecraft_password");
+            
+            // Дополнительные настройки для стабильности
+            config.setProperty("hibernate.connection.pool_size", "5");
+            config.setProperty("hibernate.connection.autocommit", "false");
+            config.setProperty("hibernate.connection.provider_disables_autocommit", "true");
             
             // Настройки Hibernate
             config.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
