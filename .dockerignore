@@ -10,3 +10,4 @@ src/
 .gitignore
 .idea/
 *.iml
+.env
