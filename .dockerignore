@@ -1,0 +1,12 @@
+# Игнорируем ненужные файлы при сборке Docker образа
+build/
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+src/
+*.md
+.git/
+.gitignore
+.idea/
+*.iml
