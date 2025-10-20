@@ -1,5 +1,7 @@
 package io.quniq.game;
 
+import io.quniq.game.config.DatabaseConfig;
+import io.quniq.game.network.NetworkRegistry;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -19,6 +21,20 @@ public class Gamemod implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("Initializing Game Mod...");
+		
+		// Инициализация базы данных
+		try {
+			DatabaseConfig.initialize();
+			LOGGER.info("Database initialized successfully!");
+		} catch (Exception e) {
+            LOGGER.error("Failed to initialize database: {}", e.getMessage());
+		}
+		
+		// Регистрация сетевых пакетов
+		NetworkRegistry.registerServerPackets();
+		LOGGER.info("Network packets registered successfully!");
+		
+		LOGGER.info("Game Mod initialized successfully!");
 	}
 }
