@@ -83,18 +83,3 @@ docker exec minecraft_postgres pg_dump -U minecraft_user minecraft_messages > ba
 # Восстановление БД
 docker exec -i minecraft_postgres psql -U minecraft_user minecraft_messages < backup.sql
 ```
-
-## Полный цикл тестирования
-1. Запуск: Docker + IDEA
-2. В игре: `M` → ввод текста → `Send`
-3. Проверка: `SELECT * FROM messages;`
-4. Очистка: `docker-compose down -v`
-
-```textmate
-(Minecraft) [STDOUT]: Message saved to database: MessageEntity{id=1, uuid=1fa8a2b7-811f-322e-b30d-8bfc6ccd460c, text='Привет, мир!'}
-(Minecraft) [STDOUT]: Message successfully saved to database with ID: 1
-```
-
-> Если мод не загружается:
-> * Проверь, что все зависимости скачаны: `.\gradlew.bat build`
-> * Проверь логи в консоли IDEA
