@@ -55,7 +55,6 @@ public class CustomScreen extends Screen {
      */
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        this.renderBackground(graphics, mouseX, mouseY, delta);
         super.render(graphics, mouseX, mouseY, delta);
         graphics.drawString(this.font, Component.literal("Enter message:"),
                 this.width / 2 - 100,
