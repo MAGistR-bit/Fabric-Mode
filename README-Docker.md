@@ -60,6 +60,14 @@ docker exec -it minecraft_postgres psql -U minecraft_user -d minecraft_messages
 - `uuid` - UUID игрока
 - `text` - VARCHAR(256) текст сообщения
 
+Проверка БД:
+```text
+# select * from messages;
+ id | uuid | text
+----+------+------
+(0 rows)
+```
+
 ## Полезные команды
 
 ```bash
